@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Bank {
 	Bank() {
@@ -28,9 +29,14 @@ public class Bank {
 		users.clear();
 		String temp;
 		while ((temp = reader.readLine()) != null) {
-			String[] arr = temp.split(" ");
+			Scanner tempScanner = new Scanner(temp);
+				String[] arr = new String[3];
+				arr[0] = tempScanner.next();
+				arr[1] = (tempScanner.next()+" "+tempScanner.next());
+				arr[2] = tempScanner.next();
 			User tempUser = new User(Integer.parseInt(arr[0]), arr[1], Double.parseDouble(arr[2]));
 			users.add(tempUser);
+			tempScanner.close();
 		}
 		reader.close();
 	}
@@ -87,6 +93,21 @@ public class Bank {
 			return false;
 		}
 		return true;
+	}
+	
+	public void details() throws IOException{
+		BufferedReader reader = Files.newBufferedReader(userPath);
+		users.clear();
+		String temp;
+		while ((temp = reader.readLine()) != null) {
+			String[] arr = temp.split(" ");
+			for(int i = 0; i < arr.length; i++){
+				System.out.print(arr[i]+" ");
+			}
+			System.out.println();
+		}
+	
+		reader.close();
 	}
 	
 }

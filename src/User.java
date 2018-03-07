@@ -3,6 +3,7 @@ public class User {
 	int userNum;
 	String userName;
 	double accBalance;
+	
 	public User(int userNum, String userName, double accBalance) {
 		this.userNum = userNum;
 		this.userName = userName;
