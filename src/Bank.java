@@ -18,7 +18,7 @@ public class Bank {
 	public void writeUser() throws IOException {
 		BufferedWriter writer = Files.newBufferedWriter(userPath);
 		for (User u1 : users) {
-			writer.write(u1.getUserNum() + " " + u1.getUserName() + " " + u1.getAccBalance());
+			writer.write(u1.getUserNum() + "," + u1.getUserName() + "," + u1.getAccBalance());
 			writer.newLine();
 		}
 		writer.flush();
@@ -30,9 +30,10 @@ public class Bank {
 		String temp;
 		while ((temp = reader.readLine()) != null) {
 			Scanner tempScanner = new Scanner(temp);
+			tempScanner.useDelimiter(",");
 				String[] arr = new String[3];
 				arr[0] = tempScanner.next();
-				arr[1] = (tempScanner.next()+" "+tempScanner.next());
+				arr[1] = (tempScanner.next());
 				arr[2] = tempScanner.next();
 			User tempUser = new User(Integer.parseInt(arr[0]), arr[1], Double.parseDouble(arr[2]));
 			users.add(tempUser);
@@ -100,9 +101,10 @@ public class Bank {
 		users.clear();
 		String temp;
 		while ((temp = reader.readLine()) != null) {
-			String[] arr = temp.split(" ");
-			for(int i = 0; i < arr.length; i++){
-				System.out.print(arr[i]+" ");
+			Scanner ls  = new Scanner(temp);
+			ls.useDelimiter(",");
+			while (ls.hasNext()) {
+				System.out.print(ls.next()+" ");
 			}
 			System.out.println();
 		}

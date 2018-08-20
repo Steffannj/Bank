@@ -1,5 +1,3 @@
-1 stefan stefanovic 100.0
-2 dejan dejanovic 2000.0
-44 marko markovic 99000.0
-33 pero peric 1.0
-23 marko simic 1000.0
+1,Stefan Stefanovic,500.0
+2,Marko Markovic,1000.0
+3,Dejan,500.0
